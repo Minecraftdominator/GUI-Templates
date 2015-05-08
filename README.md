@@ -1,2 +1,2 @@
 # GUI-Templates
-GUI Temates for use with ModPE.
+GUI Templates, for use with ModPE.
