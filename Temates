@@ -1,0 +1,38 @@
+#Standard GUI
+
+var GUI;
+
+var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+
+function newLevel(){
+activity.runOnUiThread(new java.lang.Runnable({ run: function(){
+        try{
+            var layout = new android.widget.LinearLayout(activity);
+            layout.setOrientation(1);
+GUI = new android.widget.PopupWindow();
+
+            var button = new android.widget.Button(activity);
+            button.setText("Button");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+                    //Your Code
+                }
+            }));
+            layout.addView(button);
+
+            GUI.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+            GUI.showAtLocation(activity.getWindow().getDecorView(), android.view.Gravity.RIGHT | android.view.Gravity.TOP, 0, 0);
+        }catch(err){
+            print("An error occured: " + err);
+        }
+    }}));
+}
+
+function leaveGame(){
+    activity.runOnUiThread(new java.lang.Runnable({ run: function(){
+        if(GUI != null){
+            GUI.dismiss();
+            GUI = null;
+        }
+    }}));
+}
